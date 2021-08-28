@@ -1,1 +1,3 @@
-exports.appHome = (req, res) => res.send('Hola Home')
+exports.appHome = (req, res) => res.render('index', {
+    title: "Projects APP"
+})

@@ -1,0 +1,28 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/normalize.css")
+        link(rel="stylesheet", href="/css/app.css")
+        title #{title}
+    body 
+        header.banner
+            h1 Administrador de Proyectos
+            a(href="#") Cerrar Sesión
+        main.content
+            aside.content-project
+                .panel.create-project
+                    a(href="#").button Nuevo Proyecto
+                        span +
+                .panel.list-projects
+                    h2 Proyectos
+                    ul#projects.projects
+                        li
+                            a(href="#") Proyecto de prueba
+                        li
+                            a(href="#") Proyecto Dos
+                        li
+                            a(href="#") Proyecto tres
+            block content 
