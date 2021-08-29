@@ -9,20 +9,19 @@ html(lang="en")
         title Projects | #{title}
     body 
         header.banner
-            h1 Administrador de Proyectos
-            a(href="#") Cerrar Sesión
+            h1 Project Manager App
+            a(href="/") Home
+            a(href="#") Sign out
         main.content
             aside.content-project
                 .panel.create-project
-                    a(href="#").button Nuevo Proyecto
+                    a(href="/new-project").button Add new
                         span +
                 .panel.list-projects
-                    h2 Proyectos
+                    h2 Projects
                     ul#projects.projects
-                        li
-                            a(href="#") Proyecto de prueba
-                        li
-                            a(href="#") Proyecto Dos
-                        li
-                            a(href="#") Proyecto tres
+                        if listProjects
+                            each project in listProjects
+                                li
+                                    a(href="#")=project.name
             block content 

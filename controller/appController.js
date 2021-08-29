@@ -1,20 +1,35 @@
-exports.appHome = (req, res) => res.render('index', {
-    title: "Home"
-})
+const Projects = require('../models/Projects')
 
-exports.appNewProject = (req, res) => res.render('newProject', {
-    title: "New Project"
-})
+exports.appHome = async (req, res) => {
+    const listProjects = await Projects.findAll();
 
-exports.newProject = (req, res) => {
-    const { name } = req.body
+    res.render('index', {
+        title: "Home",
+        listProjects
+    })
+}
+
+
+exports.appNewProject = async (req, res) => {
+    const listProjects = await Projects.findAll();
+    res.render('newProject', {
+        title: "New-Project",
+        listProjects
+    })
+}
+
+exports.newProject = async (req, res) => {
+    const listProjects = await Projects.findAll();
+    const { name, url } = req.body
     let errors = []
-    console.log(name)
-    console.log(errors.length)
 
     if (!name) { errors.push({ 'text': 'Add name' }) }
 
-    errors.length > 0 ?
-        res.render('newProject', { title: 'New Project', errors })
-        : console.log("hola")
+    if (errors.length > 0) {
+        res.render('newProject', { title: 'New Project', errors, listProjects })
+    } else {
+        const proyecto = await Projects.create({ name, url, listProjects });
+        res.redirect('/')
+    }
+
 }

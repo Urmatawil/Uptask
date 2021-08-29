@@ -2,7 +2,7 @@ extends layout
 
 block content
     .principal-content
-        h1 #{title}
+        h1 Add New Project
 
         if errors
             each error in errors 
@@ -10,7 +10,7 @@ block content
 
         form.add-project(action="/new-project" method="POST")
             .form-field
-                label(for="name") Name Project:
+                label(for="name") Title Project:
                 input(type="text" id="name" name="name" placeholder="add name...")
             .send-button
                 input(type="submit" value="Add" class="button")
