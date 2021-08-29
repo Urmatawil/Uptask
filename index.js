@@ -6,6 +6,15 @@ const routes = require('./routes')
 const path = require('path')
 //creamos una app con express
 const app = express()
+//conexion base de datos
+const db = require('./config/db')
+//importamos el modelo de la BD
+require('./models/Projects')
+db.sync()
+    .then(() => console.log('Conexión exitosa.'))
+    .catch(error => (console.error(error)))
+
+app.use(express.urlencoded({ extended: true }))
 //ubicar archivos estaticos, ejm CSS
 app.use(express.static('public'))
 //buscas las rutas creadas

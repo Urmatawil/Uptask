@@ -7,7 +7,8 @@ const appController = require('../controller/appController')
 //ruta para el home
 module.exports = function () {
     router.get('/', appController.appHome)
-
+    router.get('/new-project', appController.appNewProject)
+    router.post('/new-project', appController.newProject)
     return router
 }
 
