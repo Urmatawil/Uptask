@@ -15,6 +15,14 @@ module.exports = function () {
     router.post('/new-project',
         body('name').not().isEmpty().trim().escape(),
         appController.newProject)
+
+    //listar proyectos
+    router.get('/projects/:url', appController.projectController)
+
+    //editar proyecto
+    router.get('/projects/edit/:id', appController.editProject)
+
+
     return router
 }
 

@@ -23,5 +23,5 @@ html(lang="en")
                         if listProjects
                             each project in listProjects
                                 li
-                                    a(href="#")=project.name
-            block content 
+                                    a(href=`/projects/${project.url}`)=project.name
+            block content

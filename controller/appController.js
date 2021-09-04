@@ -33,3 +33,31 @@ exports.newProject = async (req, res) => {
     }
 
 }
+
+exports.projectController = async (req, res, next) => {
+    const listProjects = await Projects.findAll();
+    const proj = await Projects.findOne({
+        where: {
+            url: req.params.url
+        }
+    })
+    if (!proj) return next()
+
+    //renderizamos la vista
+    res.render('todoProjects', {
+        name: "Lista de tareas",
+        title: proj.name,
+        proj,
+        listProjects
+    })
+}
+
+exports.editProject = async (req, res) => {
+    const listProjects = await Projects.findAll();
+
+    res.render('newProject', {
+        name: "Edit Project",
+        title: "Edit",
+        listProjects
+    })
+}
