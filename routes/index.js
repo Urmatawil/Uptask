@@ -21,6 +21,9 @@ module.exports = function () {
 
     //editar proyecto
     router.get('/projects/edit/:id', appController.editProject)
+    router.post('/new-project/:id',
+        body('name').not().isEmpty().trim().escape(),
+        appController.updateProject)
 
 
     return router

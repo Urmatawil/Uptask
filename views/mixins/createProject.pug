@@ -1,0 +1,8 @@
+mixin createProject(project={})
+
+    form.add-project(action=`/new-project/${project.id || ""}` method="POST")
+            .form-field
+                label(for="name") Title Project:
+                input(type="text" id="name" name="name" value=project.name placeholder="add name...")
+            .send-button
+                input(type="submit" value=`${project.name ? "Edit" : "Add"}` class="button")
